@@ -40,6 +40,20 @@
 #include <Acceptor.h>
 #include <SocketAcceptor.h>
 #include <DataDictionary.h>
+#include <DatabaseConnectionID.h>
+#include <DatabaseConnectionPool.h>
+#include <PostgreSQLConnection.h>
+
+#include <PostgreSQLLog.h>
+#include <PostgreSQLStore.h>
+#include <ThreadedSocketInitiator.h>
+#include <SSLSocketInitiator.h>
+#include <ThreadedSSLSocketInitiator.h>
+#include <ThreadedSocketAcceptor.h>
+#include <SSLSocketAcceptor.h>
+#include <ThreadedSSLSocketAcceptor.h>
+
+
 typedef FIX::UtcTimeStamp UtcTimeStamp;
 typedef FIX::UtcDate UtcDate;
 typedef FIX::UtcTimeOnly UtcTimeOnly;
@@ -62,6 +76,8 @@ typedef FIX::MessageStore MessageStore;
 typedef FIX::MessageStoreFactory MessageStoreFactory;
 typedef FIX::Mutex Mutex;
 typedef FIX::DOMDocumentPtr DOMDocumentPtr;
+
+typedef FIX::DatabaseConnectionID DatabaseConnectionID;
 %}
 
 %typedef DoubleField PriceField;
@@ -149,6 +165,9 @@ typedef FIX::DOMDocumentPtr DOMDocumentPtr;
 %include "../C++/Group.h"
 %include "../C++/Fields.h"
 %include "../C++/FixFields.h"
+%include "../C++/DatabaseConnectionID.h"
+%include "../C++/DatabaseConnectionPool.h"
+%include "../C++/PostgreSQLConnection.h"
 %include "../C++/Values.h"
 %include "../C++/FixValues.h"
 %include "../C++/SessionID.h"
@@ -158,11 +177,19 @@ typedef FIX::DOMDocumentPtr DOMDocumentPtr;
 %include "../C++/SessionID.h"
 %include "../C++/Log.h"
 %include "../C++/FileLog.h"
+%include "../C++/PostgreSQLLog.h"
 %include "../C++/MessageStore.h"
 %include "../C++/FileStore.h"
+%include "../C++/PostgreSQLStore.h"
 %include "../C++/Application.h"
 %include "../C++/Initiator.h"
 %include "../C++/SocketInitiator.h"
+%include "../C++/ThreadedSocketInitiator.h"
+%include "../C++/SSLSocketInitiator.h"
+%include "../C++/ThreadedSSLSocketInitiator.h"
 %include "../C++/Acceptor.h"
 %include "../C++/SocketAcceptor.h"
+%include "../C++/ThreadedSocketAcceptor.h"
+%include "../C++/SSLSocketAcceptor.h"
+%include "../C++/ThreadedSSLSocketAcceptor.h"
 %include "../C++/DataDictionary.h"

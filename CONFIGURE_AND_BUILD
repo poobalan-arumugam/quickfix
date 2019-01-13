@@ -1,0 +1,9 @@
+# see README
+
+make clean
+
+./bootstrap
+
+./configure --with-openssl -with-python3 --with-postgresql
+
+make -j5
