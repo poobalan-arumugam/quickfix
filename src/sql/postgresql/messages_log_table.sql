@@ -7,6 +7,7 @@ CREATE TABLE messages_log (
   sendercompid VARCHAR(64),
   targetcompid VARCHAR(64),
   session_qualifier VARCHAR(64),
+  direction_indicator CHAR NOT NULL,
   text TEXT NOT NULL,
   PRIMARY KEY (id)
 );

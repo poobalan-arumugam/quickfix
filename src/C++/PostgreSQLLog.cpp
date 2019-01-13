@@ -228,7 +228,7 @@ void PostgreSQLLog::backup()
 {
 }
 
-void PostgreSQLLog::insert( const std::string& table, const std::string value )
+void PostgreSQLLog::insert( const std::string& table, const char direction_indicator, const std::string value )
 {
   UtcTimeStamp time;
   int year, month, day, hour, minute, second, millis;
@@ -244,7 +244,9 @@ void PostgreSQLLog::insert( const std::string& table, const std::string value )
 
   std::stringstream queryString;
   queryString << "INSERT INTO " << table << " "
-  << "(time, beginstring, sendercompid, targetcompid, session_qualifier, text) "
+  << "(time, beginstring, sendercompid, targetcompid, session_qualifier, "
+  << ( ( direction_indicator == '@' ) ? "" : "direction_indicator, ")
+  << "text) "
   << "VALUES ("
   << "'" << sqlTime << "',";
 
@@ -262,6 +264,11 @@ void PostgreSQLLog::insert( const std::string& table, const std::string value )
   else
   {
     queryString << "NULL, NULL, NULL, NULL, ";
+  }
+
+  if( direction_indicator != '@' )
+  {
+    queryString << "'" << direction_indicator << "',";
   }
 
   queryString << "'" << valueCopy << "')";

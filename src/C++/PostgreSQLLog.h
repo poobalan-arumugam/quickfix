@@ -62,15 +62,15 @@ public:
   { m_eventTable = eventTable; }
 
   void onIncoming( const std::string& value )
-  { insert( m_incomingTable, value ); }
+  { insert( m_incomingTable, 'I', value ); }
   void onOutgoing( const std::string& value )
-  { insert( m_outgoingTable, value ); }
+  { insert( m_outgoingTable, 'O', value ); }
   void onEvent( const std::string& value )
-  { insert( m_eventTable, value ); }
+  { insert( m_eventTable, '@', value ); }
 
 private:
   void init();
-  void insert( const std::string& table, const std::string value );
+  void insert( const std::string& table, const char direction_indicator, const std::string value );
 
   std::string m_incomingTable;
   std::string m_outgoingTable;
