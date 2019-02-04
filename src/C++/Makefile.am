@@ -119,8 +119,12 @@ libquickfix_la_SOURCES = \
 	pugiconfig.hpp \
 	MessageCracker.h \
 	Responder.h \
+	MultiStoreProxyStore.h \
+	MultiStoreProxyStore.cpp \
+	ZMQDealerForwarderStore.h \
+	ZMQDealerForwarderStore.cpp \
 	wx/sharedptr.h
-	
+
 if HAVE_SSL
 libquickfix_la_ssl_SOURCES = ThreadedSSLSocketAcceptor.cpp \
 	ThreadedSSLSocketAcceptor.h \

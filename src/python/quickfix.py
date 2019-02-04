@@ -38847,6 +38847,8 @@ CERT_AUTH_DIR = cvar.CERT_AUTH_DIR
 CRL_FILE = cvar.CRL_FILE
 CRL_DIR = cvar.CRL_DIR
 VERIFY_LEVEL = cvar.VERIFY_LEVEL
+ZMQ_MESSAGE_LOG_URL = cvar.ZMQ_MESSAGE_LOG_URL
+ZMQ_MESSAGE_STORE_URL = cvar.ZMQ_MESSAGE_STORE_URL
 SSL_PROTOCOL = cvar.SSL_PROTOCOL
 SSL_CIPHER_SUITE = cvar.SSL_CIPHER_SUITE
 
@@ -39502,6 +39504,9 @@ class MessageStore(_object):
     def getCreationTime(self):
         return _quickfix.MessageStore_getCreationTime(self)
 
+    def setCreationTime(self, creationTime):
+        return _quickfix.MessageStore_setCreationTime(self, creationTime)
+
     def reset(self):
         return _quickfix.MessageStore_reset(self)
 
@@ -39718,6 +39723,9 @@ class FileStore(MessageStore):
     def getCreationTime(self):
         return _quickfix.FileStore_getCreationTime(self)
 
+    def setCreationTime(self, creationTime):
+        return _quickfix.FileStore_setCreationTime(self, creationTime)
+
     def reset(self):
         return _quickfix.FileStore_reset(self)
 
@@ -39805,6 +39813,9 @@ class PostgreSQLStore(MessageStore):
 
     def getCreationTime(self):
         return _quickfix.PostgreSQLStore_getCreationTime(self)
+
+    def setCreationTime(self, creationTime):
+        return _quickfix.PostgreSQLStore_setCreationTime(self, creationTime)
 
     def reset(self):
         return _quickfix.PostgreSQLStore_reset(self)
@@ -40277,6 +40288,181 @@ class DataDictionary(_object):
         return _quickfix.DataDictionary_validate(self, *args)
 DataDictionary_swigregister = _quickfix.DataDictionary_swigregister
 DataDictionary_swigregister(DataDictionary)
+
+class ZMQDealerForwarderStoreFactory(MessageStoreFactory):
+    __swig_setmethods__ = {}
+    for _s in [MessageStoreFactory]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, ZMQDealerForwarderStoreFactory, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MessageStoreFactory]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, ZMQDealerForwarderStoreFactory, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, settings):
+        this = _quickfix.new_ZMQDealerForwarderStoreFactory(settings)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def create(self, arg2):
+        return _quickfix.ZMQDealerForwarderStoreFactory_create(self, arg2)
+
+    def destroy(self, arg2):
+        return _quickfix.ZMQDealerForwarderStoreFactory_destroy(self, arg2)
+    __swig_destroy__ = _quickfix.delete_ZMQDealerForwarderStoreFactory
+    __del__ = lambda self: None
+ZMQDealerForwarderStoreFactory_swigregister = _quickfix.ZMQDealerForwarderStoreFactory_swigregister
+ZMQDealerForwarderStoreFactory_swigregister(ZMQDealerForwarderStoreFactory)
+
+class ZMQDealerForwarderStore(MessageStore):
+    __swig_setmethods__ = {}
+    for _s in [MessageStore]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, ZMQDealerForwarderStore, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MessageStore]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, ZMQDealerForwarderStore, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, sessionID, url):
+        this = _quickfix.new_ZMQDealerForwarderStore(sessionID, url)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+    __swig_destroy__ = _quickfix.delete_ZMQDealerForwarderStore
+    __del__ = lambda self: None
+
+    def set(self, arg2, arg3):
+        return _quickfix.ZMQDealerForwarderStore_set(self, arg2, arg3)
+
+    def get(self, arg2, arg3, arg4):
+        return _quickfix.ZMQDealerForwarderStore_get(self, arg2, arg3, arg4)
+
+    def getNextSenderMsgSeqNum(self):
+        return _quickfix.ZMQDealerForwarderStore_getNextSenderMsgSeqNum(self)
+
+    def getNextTargetMsgSeqNum(self):
+        return _quickfix.ZMQDealerForwarderStore_getNextTargetMsgSeqNum(self)
+
+    def setNextSenderMsgSeqNum(self, value):
+        return _quickfix.ZMQDealerForwarderStore_setNextSenderMsgSeqNum(self, value)
+
+    def setNextTargetMsgSeqNum(self, value):
+        return _quickfix.ZMQDealerForwarderStore_setNextTargetMsgSeqNum(self, value)
+
+    def incrNextSenderMsgSeqNum(self):
+        return _quickfix.ZMQDealerForwarderStore_incrNextSenderMsgSeqNum(self)
+
+    def incrNextTargetMsgSeqNum(self):
+        return _quickfix.ZMQDealerForwarderStore_incrNextTargetMsgSeqNum(self)
+
+    def setCreationTime(self, creationTime):
+        return _quickfix.ZMQDealerForwarderStore_setCreationTime(self, creationTime)
+
+    def getCreationTime(self):
+        return _quickfix.ZMQDealerForwarderStore_getCreationTime(self)
+
+    def reset(self):
+        return _quickfix.ZMQDealerForwarderStore_reset(self)
+
+    def refresh(self):
+        return _quickfix.ZMQDealerForwarderStore_refresh(self)
+ZMQDealerForwarderStore_swigregister = _quickfix.ZMQDealerForwarderStore_swigregister
+ZMQDealerForwarderStore_swigregister(ZMQDealerForwarderStore)
+
+class MultiStoreProxyStoreFactory(MessageStoreFactory):
+    __swig_setmethods__ = {}
+    for _s in [MessageStoreFactory]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MultiStoreProxyStoreFactory, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MessageStoreFactory]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MultiStoreProxyStoreFactory, name)
+    __repr__ = _swig_repr
+
+    def create(self, arg2):
+        return _quickfix.MultiStoreProxyStoreFactory_create(self, arg2)
+
+    def destroy(self, arg2):
+        return _quickfix.MultiStoreProxyStoreFactory_destroy(self, arg2)
+
+    def __init__(self):
+        this = _quickfix.new_MultiStoreProxyStoreFactory()
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+    __swig_destroy__ = _quickfix.delete_MultiStoreProxyStoreFactory
+    __del__ = lambda self: None
+MultiStoreProxyStoreFactory_swigregister = _quickfix.MultiStoreProxyStoreFactory_swigregister
+MultiStoreProxyStoreFactory_swigregister(MultiStoreProxyStoreFactory)
+
+class MultiStoreProxyStore(MessageStore):
+    __swig_setmethods__ = {}
+    for _s in [MessageStore]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MultiStoreProxyStore, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MessageStore]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MultiStoreProxyStore, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, sessionID):
+        this = _quickfix.new_MultiStoreProxyStore(sessionID)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+    __swig_destroy__ = _quickfix.delete_MultiStoreProxyStore
+    __del__ = lambda self: None
+
+    def add(self, store):
+        return _quickfix.MultiStoreProxyStore_add(self, store)
+
+    def set(self, arg2, arg3):
+        return _quickfix.MultiStoreProxyStore_set(self, arg2, arg3)
+
+    def get(self, arg2, arg3, arg4):
+        return _quickfix.MultiStoreProxyStore_get(self, arg2, arg3, arg4)
+
+    def getNextSenderMsgSeqNum(self):
+        return _quickfix.MultiStoreProxyStore_getNextSenderMsgSeqNum(self)
+
+    def getNextTargetMsgSeqNum(self):
+        return _quickfix.MultiStoreProxyStore_getNextTargetMsgSeqNum(self)
+
+    def setNextSenderMsgSeqNum(self, value):
+        return _quickfix.MultiStoreProxyStore_setNextSenderMsgSeqNum(self, value)
+
+    def setNextTargetMsgSeqNum(self, value):
+        return _quickfix.MultiStoreProxyStore_setNextTargetMsgSeqNum(self, value)
+
+    def incrNextSenderMsgSeqNum(self):
+        return _quickfix.MultiStoreProxyStore_incrNextSenderMsgSeqNum(self)
+
+    def incrNextTargetMsgSeqNum(self):
+        return _quickfix.MultiStoreProxyStore_incrNextTargetMsgSeqNum(self)
+
+    def setCreationTime(self, creationTime):
+        return _quickfix.MultiStoreProxyStore_setCreationTime(self, creationTime)
+
+    def getCreationTime(self):
+        return _quickfix.MultiStoreProxyStore_getCreationTime(self)
+
+    def reset(self):
+        return _quickfix.MultiStoreProxyStore_reset(self)
+
+    def refresh(self):
+        return _quickfix.MultiStoreProxyStore_refresh(self)
+MultiStoreProxyStore_swigregister = _quickfix.MultiStoreProxyStore_swigregister
+MultiStoreProxyStore_swigregister(MultiStoreProxyStore)
 
 
 #ifdef SWIGPYTHON

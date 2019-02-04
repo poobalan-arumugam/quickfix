@@ -81,6 +81,7 @@ public:
   virtual void incrNextTargetMsgSeqNum() throw ( IOException ) = 0;
 
   virtual UtcTimeStamp getCreationTime() const throw ( IOException ) = 0;
+  virtual void setCreationTime( const UtcTimeStamp& creationTime ) throw ( IOException ) = 0;
 
   virtual void reset() throw ( IOException ) = 0;
   virtual void refresh() throw ( IOException ) = 0;

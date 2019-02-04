@@ -123,6 +123,7 @@ public:
   void incrNextTargetMsgSeqNum() throw ( IOException );
 
   UtcTimeStamp getCreationTime() const throw ( IOException );
+  void setCreationTime( const UtcTimeStamp& creationTime ) throw ( IOException );
 
   void reset() throw ( IOException );
   void refresh() throw ( IOException );

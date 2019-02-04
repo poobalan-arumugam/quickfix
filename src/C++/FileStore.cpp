@@ -272,6 +272,11 @@ UtcTimeStamp FileStore::getCreationTime() const throw ( IOException )
   return m_cache.getCreationTime();
 }
 
+void FileStore::setCreationTime( const UtcTimeStamp& creationTime ) throw ( IOException )
+{
+  m_cache.setCreationTime( creationTime );
+}
+
 void FileStore::reset() throw ( IOException )
 {
   try

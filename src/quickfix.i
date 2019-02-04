@@ -53,6 +53,8 @@
 #include <SSLSocketAcceptor.h>
 #include <ThreadedSSLSocketAcceptor.h>
 
+#include <ZMQDealerForwarderStore.h>
+#include <MultiStoreProxyStore.h>
 
 typedef FIX::UtcTimeStamp UtcTimeStamp;
 typedef FIX::UtcDate UtcDate;
@@ -193,3 +195,5 @@ typedef FIX::DatabaseConnectionID DatabaseConnectionID;
 %include "../C++/SSLSocketAcceptor.h"
 %include "../C++/ThreadedSSLSocketAcceptor.h"
 %include "../C++/DataDictionary.h"
+%include "../C++/ZMQDealerForwarderStore.h"
+%include "../C++/MultiStoreProxyStore.h"

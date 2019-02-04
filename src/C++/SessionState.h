@@ -188,6 +188,8 @@ public:
   { Locker l( m_mutex ); m_pStore->incrNextTargetMsgSeqNum(); }
   UtcTimeStamp getCreationTime() const throw ( IOException )
   { Locker l( m_mutex ); return m_pStore->getCreationTime(); }
+  void setCreationTime( const UtcTimeStamp& creationTime ) throw ( IOException )
+  { Locker l( m_mutex ); m_pStore->setCreationTime( creationTime ); }
   void reset() throw ( IOException )
   { Locker l( m_mutex ); m_pStore->reset(); }
   void refresh() throw ( IOException )

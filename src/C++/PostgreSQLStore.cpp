@@ -285,6 +285,11 @@ UtcTimeStamp PostgreSQLStore::getCreationTime() const throw ( IOException )
   return m_cache.getCreationTime();
 }
 
+void PostgreSQLStore::setCreationTime( const UtcTimeStamp& creationTime ) throw ( IOException )
+{
+  m_cache.setCreationTime( creationTime );
+}
+
 void PostgreSQLStore::reset() throw ( IOException )
 {
   std::stringstream queryString;
