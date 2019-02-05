@@ -4,9 +4,28 @@ namespace FIX
 {
 
 
+MultiStoreProxyStoreFactory::~MultiStoreProxyStoreFactory()
+{
+  for(auto factory : m_store_factories)
+  {
+    delete factory;
+  }
+  m_store_factories.clear();
+}
+
+void MultiStoreProxyStoreFactory::add(MessageStoreFactory* store_factory)
+{
+  m_store_factories.push_back(store_factory);
+}
+
 MessageStore* MultiStoreProxyStoreFactory::create( const SessionID& sessionID )
 {
   MultiStoreProxyStore* store = new MultiStoreProxyStore( sessionID );
+  for(auto factory : m_store_factories)
+  {
+    MessageStore* entry = factory->create( sessionID );
+    store->add(entry);
+  }
   return store;
 }
 

@@ -40386,20 +40386,23 @@ class MultiStoreProxyStoreFactory(MessageStoreFactory):
     __getattr__ = lambda self, name: _swig_getattr(self, MultiStoreProxyStoreFactory, name)
     __repr__ = _swig_repr
 
-    def create(self, arg2):
-        return _quickfix.MultiStoreProxyStoreFactory_create(self, arg2)
-
-    def destroy(self, arg2):
-        return _quickfix.MultiStoreProxyStoreFactory_destroy(self, arg2)
-
-    def __init__(self):
-        this = _quickfix.new_MultiStoreProxyStoreFactory()
+    def __init__(self, settings):
+        this = _quickfix.new_MultiStoreProxyStoreFactory(settings)
         try:
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
     __swig_destroy__ = _quickfix.delete_MultiStoreProxyStoreFactory
     __del__ = lambda self: None
+
+    def create(self, arg2):
+        return _quickfix.MultiStoreProxyStoreFactory_create(self, arg2)
+
+    def destroy(self, arg2):
+        return _quickfix.MultiStoreProxyStoreFactory_destroy(self, arg2)
+
+    def add(self, store_factory):
+        return _quickfix.MultiStoreProxyStoreFactory_add(self, store_factory)
 MultiStoreProxyStoreFactory_swigregister = _quickfix.MultiStoreProxyStoreFactory_swigregister
 MultiStoreProxyStoreFactory_swigregister(MultiStoreProxyStoreFactory)
 

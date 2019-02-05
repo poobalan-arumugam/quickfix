@@ -7,6 +7,7 @@
 
 #include "Message.h"
 #include "MessageStore.h"
+#include "SessionSettings.h"
 #include <map>
 #include <vector>
 #include <string>
@@ -20,11 +21,23 @@ namespace FIX
  * This will lose all data on process termination. This class should only
  * be used for test applications, never in production.
  */
+
+
+
 class MultiStoreProxyStoreFactory : public MessageStoreFactory
 {
 public:
+  MultiStoreProxyStoreFactory( const SessionSettings& settings )
+    : m_settings( settings ), m_store_factories() {};
+  virtual ~MultiStoreProxyStoreFactory();
+
   MessageStore* create( const SessionID& );
   void destroy( MessageStore* );
+
+  void add(MessageStoreFactory* store_factory);
+private:
+  SessionSettings m_settings;
+  std::vector<MessageStoreFactory*> m_store_factories;
 };
 
 /**
